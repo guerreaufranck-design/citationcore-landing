@@ -96,7 +96,7 @@ const jsonLd = {
     "@type": "Offer",
     price: "0",
     priceCurrency: "USD",
-    description: "Free plan available. Paid plans from $9.99/month.",
+    description: "Free plan available. Paid plans from $19/month.",
   },
   aggregateRating: {
     "@type": "AggregateRating",
@@ -161,7 +161,7 @@ const faqJsonLd = {
       name: "Is there a free plan?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes! CitationCore offers a free plan that includes AI visibility scoring, up to 5 product scans, and basic competitor monitoring. Paid plans start at $9.99/month for more scans, advanced analytics, and priority support.",
+        text: "Yes! CitationCore offers a free plan that includes AI visibility scanning across 4 engines, 15 AI credits per month, and up to 5 products. Paid plans start at $19/month for more credits, product optimization, and automated weekly scans.",
       },
     },
   ],

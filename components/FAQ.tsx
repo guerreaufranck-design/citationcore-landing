@@ -31,7 +31,7 @@ const faqs = [
   {
     question: "Is there a free plan?",
     answer:
-      "Yes! CitationCore offers a generous free plan that includes your AI visibility score, up to 5 product scans, basic competitor monitoring, and LLMs.txt generation. Paid plans start at $9.99/month for more scans, advanced analytics, and content optimization tools.",
+      "Yes! CitationCore offers a free plan that includes AI visibility scanning across 4 engines, 15 AI credits per month, brand profile setup, and up to 5 products. Paid plans start at $19/month for more credits, product optimization, and automated weekly scans.",
   },
   {
     question: "How long does it take to see results?",
