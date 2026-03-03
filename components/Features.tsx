@@ -2,6 +2,7 @@ import Image from "next/image";
 
 const features = [
   {
+    id: "visibility",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
@@ -9,11 +10,12 @@ const features = [
     ),
     title: "AI Visibility Score",
     description:
-      "Get a real-time score showing how visible your brand is across AI assistants. Track improvements over time and know exactly where you stand.",
+      "Get a score from 0 to 100 showing how visible your brand is across ChatGPT, Gemini, Claude, and Perplexity. Each scan queries all 4 AI engines with real shopping prompts and checks if they recommend you. Track your score over time with weekly automated scans.",
     image: "/images/feature-visibility.png",
-    imageAlt: "AI Visibility Score dashboard showing brand visibility metrics",
+    imageAlt: "AI Visibility Score dashboard showing scores per AI engine — ChatGPT, Gemini, Claude, Perplexity",
   },
   {
+    id: "products",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z" />
@@ -22,11 +24,12 @@ const features = [
     ),
     title: "Product Citation Tracking",
     description:
-      "See which of your products get cited by ChatGPT, Perplexity, Gemini, and Claude. Know your citation rate and identify gaps to fix.",
+      "Scan each product individually to see which AI models cite it and which don't. Get a citation score per product, identify the ones AI ignores, and optimize them with one-click AI rewrite of titles, descriptions, tags, and meta fields — published directly to Shopify.",
     image: "/images/feature-products.png",
-    imageAlt: "Product list showing citation scores across different AI models",
+    imageAlt: "Product list showing individual citation scores and optimization options",
   },
   {
+    id: "competitors",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
@@ -35,13 +38,14 @@ const features = [
         <path d="M16 3.13a4 4 0 010 7.75" />
       </svg>
     ),
-    title: "Competitor Benchmarking",
+    title: "Competitor Intelligence",
     description:
-      "Monitor how your competitors perform in AI recommendations. See who gets cited more and find opportunities to outrank them.",
+      "Discover which competitors AI recommends instead of you. Track their mention count over time, run head-to-head Citation Battles across all 4 AI engines, and get daily alerts when competitors gain visibility.",
     image: "/images/feature-competitors.png",
-    imageAlt: "Competitor analysis showing AI visibility comparison between brands",
+    imageAlt: "Competitor tracking with Citation Battle results across ChatGPT, Gemini, Claude, Perplexity",
   },
   {
+    id: "llms",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
@@ -51,11 +55,37 @@ const features = [
         <polyline points="10 9 9 9 8 9" />
       </svg>
     ),
-    title: "LLMs.txt Generation",
+    title: "LLMs.txt Publisher",
     description:
-      "Auto-generate a structured LLMs.txt file — like robots.txt, but for AI models. Help ChatGPT and others understand your brand and products accurately.",
-    image: null,
-    imageAlt: "",
+      "Generate and publish a structured llms.txt file on your store — like robots.txt, but for AI models. Tells ChatGPT, Perplexity, Claude exactly what your store offers so they can recommend you accurately.",
+    visual: "code",
+  },
+  {
+    id: "content",
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+        <line x1="3" y1="9" x2="21" y2="9" />
+        <line x1="9" y1="21" x2="9" y2="9" />
+      </svg>
+    ),
+    title: "Content Planner & Generator",
+    description:
+      "Get AI-generated content ideas — blog posts, FAQ pages, buying guides, comparisons — tailored to products that aren't getting cited. Pro plan auto-generates full articles and publishes them directly to your Shopify blog.",
+    visual: "cards",
+  },
+  {
+    id: "automation",
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+        <polyline points="17 6 23 6 23 12" />
+      </svg>
+    ),
+    title: "Automated Scans & Alerts",
+    description:
+      "Weekly automated visibility scans, email reports, competitor evolution alerts, and monthly performance reports (Pro). Set it and forget it — CitationCore monitors your AI presence 24/7.",
+    visual: "alerts",
   },
 ];
 
@@ -73,7 +103,7 @@ export default function Features() {
             <span className="gradient-text">AI recommendations</span>
           </h2>
           <p className="mt-4 text-lg text-gray-600">
-            From tracking to optimization — CitationCore gives you the full toolkit to get your Shopify store recommended by AI.
+            CitationCore scans ChatGPT, Gemini, Claude &amp; Perplexity with real shopping queries — then gives you the tools to get cited.
           </p>
         </div>
 
@@ -81,7 +111,7 @@ export default function Features() {
         <div className="space-y-24">
           {features.map((feature, i) => (
             <div
-              key={feature.title}
+              key={feature.id}
               className={`flex flex-col ${
                 i % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
               } gap-12 lg:gap-16 items-center`}
@@ -99,13 +129,13 @@ export default function Features() {
                 </p>
               </div>
 
-              {/* Image */}
-              {feature.image && (
+              {/* Screenshot image */}
+              {"image" in feature && feature.image && (
                 <div className="flex-1">
                   <div className="rounded-2xl overflow-hidden screenshot-shadow bg-gray-100">
                     <Image
                       src={feature.image}
-                      alt={feature.imageAlt}
+                      alt={feature.imageAlt || ""}
                       width={1280}
                       height={800}
                       className="w-full h-auto"
@@ -114,24 +144,23 @@ export default function Features() {
                 </div>
               )}
 
-              {/* LLMs.txt code block (for last feature) */}
-              {!feature.image && (
+              {/* LLMs.txt code block */}
+              {"visual" in feature && feature.visual === "code" && (
                 <div className="flex-1">
                   <div className="rounded-2xl overflow-hidden bg-gray-950 p-6 sm:p-8 font-mono text-sm text-gray-300 screenshot-shadow">
                     <div className="flex items-center gap-2 mb-4">
                       <div className="w-3 h-3 rounded-full bg-red-500" />
                       <div className="w-3 h-3 rounded-full bg-yellow-500" />
                       <div className="w-3 h-3 rounded-full bg-green-500" />
-                      <span className="ml-2 text-gray-500 text-xs">llms.txt</span>
+                      <span className="ml-2 text-gray-500 text-xs">yourstore.myshopify.com/apps/citationcore/llms.txt</span>
                     </div>
                     <pre className="overflow-x-auto whitespace-pre-wrap">
 {`# Your Store Name
 > Premium organic skincare
 
 ## About
-We craft small-batch, organic skincare
-using sustainably sourced ingredients.
-Based in Portland, OR. Founded 2019.
+Small-batch, organic skincare.
+Sustainably sourced. Portland, OR.
 
 ## Products
 - [Vitamin C Serum](/products/vitamin-c)
@@ -143,9 +172,47 @@ Based in Portland, OR. Founded 2019.
 
 ## Why Choose Us
 - 100% organic & cruelty-free
-- 30-day money-back guarantee
-- Free shipping over $50`}</pre>
+- 30-day money-back guarantee`}</pre>
                   </div>
+                </div>
+              )}
+
+              {/* Content planner cards */}
+              {"visual" in feature && feature.visual === "cards" && (
+                <div className="flex-1 grid grid-cols-2 gap-4">
+                  {[
+                    { label: "Blog Posts", desc: "SEO articles optimized for AI citation", icon: "📝" },
+                    { label: "FAQ Pages", desc: "Structured Q&A that AI loves to quote", icon: "❓" },
+                    { label: "Buying Guides", desc: "Comparison content AI recommends", icon: "📊" },
+                    { label: "Product Updates", desc: "Fresh signals for AI indexing", icon: "🔄" },
+                  ].map((item) => (
+                    <div key={item.label} className="feature-card bg-white rounded-xl p-5 border border-gray-200 shadow-sm">
+                      <span className="text-2xl">{item.icon}</span>
+                      <div className="text-sm font-bold text-gray-900 mt-2">{item.label}</div>
+                      <div className="text-xs text-gray-500 mt-1">{item.desc}</div>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* Automation alerts visual */}
+              {"visual" in feature && feature.visual === "alerts" && (
+                <div className="flex-1 space-y-4">
+                  {[
+                    { title: "Weekly Scan Complete", desc: "Your AI Visibility Score: 72 (+5 pts)", time: "Every Monday, 8am", color: "bg-brand-500" },
+                    { title: "Competitor Alert", desc: "Nike just gained +12% AI visibility in your category", time: "Daily monitoring", color: "bg-red-500" },
+                    { title: "Score Drop Alert", desc: "Your score dropped 10+ points — action needed", time: "Real-time", color: "bg-amber-500" },
+                    { title: "Monthly Report", desc: "Your March performance report is ready (Pro)", time: "1st of each month", color: "bg-accent-500" },
+                  ].map((alert) => (
+                    <div key={alert.title} className="flex items-start gap-4 bg-white rounded-xl p-4 border border-gray-200 shadow-sm">
+                      <div className={`w-2 h-2 rounded-full ${alert.color} mt-2 shrink-0`} />
+                      <div className="flex-1 min-w-0">
+                        <div className="text-sm font-semibold text-gray-900">{alert.title}</div>
+                        <div className="text-sm text-gray-600">{alert.desc}</div>
+                        <div className="text-xs text-gray-400 mt-1">{alert.time}</div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               )}
             </div>
