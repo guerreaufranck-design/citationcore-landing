@@ -7,7 +7,7 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-const SITE_URL = "https://citationcore.app";
+const SITE_URL = "https://citationcore.com";
 const SITE_NAME = "CitationCore";
 const SITE_DESCRIPTION =
   "Get your Shopify store recommended by AI assistants like ChatGPT, Perplexity & Gemini. Track your AI visibility score, monitor citations, and optimize your product listings for the new era of AI-powered shopping.";

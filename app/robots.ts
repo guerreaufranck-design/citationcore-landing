@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://citationcore.app/sitemap.xml",
+    sitemap: "https://citationcore.com/sitemap.xml",
   };
 }
