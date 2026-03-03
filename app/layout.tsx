@@ -59,20 +59,11 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     title: "CitationCore — Get Your Shopify Store Recommended by AI",
     description: SITE_DESCRIPTION,
-    images: [
-      {
-        url: "/images/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "CitationCore - AI Visibility for Shopify Stores",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "CitationCore — Get Your Shopify Store Recommended by AI",
     description: SITE_DESCRIPTION,
-    images: ["/images/og-image.png"],
   },
   alternates: {
     canonical: SITE_URL,
