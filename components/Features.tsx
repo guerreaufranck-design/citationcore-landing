@@ -12,7 +12,7 @@ const features = [
     description:
       "Get a score from 0 to 100 showing how visible your brand is across ChatGPT, Gemini, Claude, and Perplexity. Each scan queries all 4 AI engines with real shopping prompts and checks if they recommend you. Track your score over time with weekly automated scans.",
     image: "/images/feature-visibility.png",
-    imageAlt: "AI Visibility Score dashboard showing scores per AI engine — ChatGPT, Gemini, Claude, Perplexity",
+    imageAlt: "AI Visibility Score dashboard showing scores per AI engine — ChatGPT 75%, Gemini 70%, Perplexity 78%, Claude 68%",
   },
   {
     id: "products",
@@ -26,7 +26,22 @@ const features = [
     description:
       "Scan each product individually to see which AI models cite it and which don't. Get a citation score per product, identify the ones AI ignores, and optimize them with one-click AI rewrite of titles, descriptions, tags, and meta fields — published directly to Shopify.",
     image: "/images/feature-products.png",
-    imageAlt: "Product list showing individual citation scores and optimization options",
+    imageAlt: "Product list showing citation scores per product — 85%, 78%, 72%, 68% — with Scan buttons",
+  },
+  {
+    id: "content",
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+        <line x1="3" y1="9" x2="21" y2="9" />
+        <line x1="9" y1="21" x2="9" y2="9" />
+      </svg>
+    ),
+    title: "Content Planner & Generator",
+    description:
+      "Smart content recommendations based on your scan results. CitationCore identifies uncited products and suggests buying guides, FAQ pages, and blog posts that can help AI cite you. Pro plan auto-generates and publishes content directly to Shopify.",
+    image: "/images/feature-content-planner.png",
+    imageAlt: "Content Planner showing AI-recommended buying guides and FAQ pages to improve citations",
   },
   {
     id: "competitors",
@@ -41,8 +56,7 @@ const features = [
     title: "Competitor Intelligence",
     description:
       "Discover which competitors AI recommends instead of you. Track their mention count over time, run head-to-head Citation Battles across all 4 AI engines, and get daily alerts when competitors gain visibility.",
-    image: "/images/feature-competitors.png",
-    imageAlt: "Competitor tracking with Citation Battle results across ChatGPT, Gemini, Claude, Perplexity",
+    visual: "competitor-table",
   },
   {
     id: "llms",
@@ -59,20 +73,6 @@ const features = [
     description:
       "Generate and publish a structured llms.txt file on your store — like robots.txt, but for AI models. Tells ChatGPT, Perplexity, Claude exactly what your store offers so they can recommend you accurately.",
     visual: "code",
-  },
-  {
-    id: "content",
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-        <line x1="3" y1="9" x2="21" y2="9" />
-        <line x1="9" y1="21" x2="9" y2="9" />
-      </svg>
-    ),
-    title: "Content Planner & Generator",
-    description:
-      "Get AI-generated content ideas — blog posts, FAQ pages, buying guides, comparisons — tailored to products that aren't getting cited. Pro plan auto-generates full articles and publishes them directly to your Shopify blog.",
-    visual: "cards",
   },
   {
     id: "automation",
@@ -144,6 +144,51 @@ export default function Features() {
                 </div>
               )}
 
+              {/* Competitor table visual */}
+              {"visual" in feature && feature.visual === "competitor-table" && (
+                <div className="flex-1">
+                  <div className="rounded-2xl overflow-hidden bg-white border border-gray-200 screenshot-shadow">
+                    <div className="bg-gray-50 px-6 py-3 border-b border-gray-200">
+                      <span className="text-sm font-semibold text-gray-700">Citation Battle — Your Store vs Competitors</span>
+                    </div>
+                    <div className="divide-y divide-gray-100">
+                      {[
+                        { name: "Your Store", chatgpt: true, gemini: true, perplexity: true, claude: false, score: 75 },
+                        { name: "Competitor A", chatgpt: true, gemini: false, perplexity: true, claude: true, score: 72 },
+                        { name: "Competitor B", chatgpt: false, gemini: true, perplexity: false, claude: true, score: 48 },
+                        { name: "Competitor C", chatgpt: true, gemini: false, perplexity: false, claude: false, score: 25 },
+                      ].map((row) => (
+                        <div key={row.name} className={`flex items-center px-6 py-3 ${row.name === "Your Store" ? "bg-brand-50/50" : ""}`}>
+                          <span className={`flex-1 text-sm ${row.name === "Your Store" ? "font-bold text-brand-700" : "text-gray-700"}`}>{row.name}</span>
+                          {[row.chatgpt, row.gemini, row.perplexity, row.claude].map((cited, j) => (
+                            <span key={j} className="w-16 text-center">
+                              {cited ? (
+                                <span className="inline-block w-5 h-5 rounded-full bg-brand-500 text-white text-xs leading-5">✓</span>
+                              ) : (
+                                <span className="inline-block w-5 h-5 rounded-full bg-red-100 text-red-400 text-xs leading-5">✕</span>
+                              )}
+                            </span>
+                          ))}
+                          <span className={`w-16 text-right text-sm font-bold ${row.score >= 70 ? "text-brand-600" : row.score >= 40 ? "text-amber-600" : "text-red-500"}`}>
+                            {row.score}%
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="px-6 py-2 bg-gray-50 border-t border-gray-200 flex justify-between text-xs text-gray-400">
+                      <span></span>
+                      <div className="flex gap-6">
+                        <span>ChatGPT</span>
+                        <span>Gemini</span>
+                        <span>Perplexity</span>
+                        <span>Claude</span>
+                        <span>Score</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
               {/* LLMs.txt code block */}
               {"visual" in feature && feature.visual === "code" && (
                 <div className="flex-1">
@@ -152,7 +197,7 @@ export default function Features() {
                       <div className="w-3 h-3 rounded-full bg-red-500" />
                       <div className="w-3 h-3 rounded-full bg-yellow-500" />
                       <div className="w-3 h-3 rounded-full bg-green-500" />
-                      <span className="ml-2 text-gray-500 text-xs">yourstore.myshopify.com/apps/citationcore/llms.txt</span>
+                      <span className="ml-2 text-gray-500 text-xs">yourstore.com/llms.txt</span>
                     </div>
                     <pre className="overflow-x-auto whitespace-pre-wrap">
 {`# Your Store Name
@@ -177,30 +222,12 @@ Sustainably sourced. Portland, OR.
                 </div>
               )}
 
-              {/* Content planner cards */}
-              {"visual" in feature && feature.visual === "cards" && (
-                <div className="flex-1 grid grid-cols-2 gap-4">
-                  {[
-                    { label: "Blog Posts", desc: "SEO articles optimized for AI citation", icon: "📝" },
-                    { label: "FAQ Pages", desc: "Structured Q&A that AI loves to quote", icon: "❓" },
-                    { label: "Buying Guides", desc: "Comparison content AI recommends", icon: "📊" },
-                    { label: "Product Updates", desc: "Fresh signals for AI indexing", icon: "🔄" },
-                  ].map((item) => (
-                    <div key={item.label} className="feature-card bg-white rounded-xl p-5 border border-gray-200 shadow-sm">
-                      <span className="text-2xl">{item.icon}</span>
-                      <div className="text-sm font-bold text-gray-900 mt-2">{item.label}</div>
-                      <div className="text-xs text-gray-500 mt-1">{item.desc}</div>
-                    </div>
-                  ))}
-                </div>
-              )}
-
               {/* Automation alerts visual */}
               {"visual" in feature && feature.visual === "alerts" && (
                 <div className="flex-1 space-y-4">
                   {[
                     { title: "Weekly Scan Complete", desc: "Your AI Visibility Score: 72 (+5 pts)", time: "Every Monday, 8am", color: "bg-brand-500" },
-                    { title: "Competitor Alert", desc: "Nike just gained +12% AI visibility in your category", time: "Daily monitoring", color: "bg-red-500" },
+                    { title: "Competitor Alert", desc: "Burton just gained +12% AI visibility in snowboards", time: "Daily monitoring", color: "bg-red-500" },
                     { title: "Score Drop Alert", desc: "Your score dropped 10+ points — action needed", time: "Real-time", color: "bg-amber-500" },
                     { title: "Monthly Report", desc: "Your March performance report is ready (Pro)", time: "1st of each month", color: "bg-accent-500" },
                   ].map((alert) => (
