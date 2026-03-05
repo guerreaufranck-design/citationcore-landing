@@ -68,6 +68,7 @@ export async function GET(
       affiliate: {
         name: affiliate.name,
         code: affiliate.code,
+        commission_type: affiliate.commission_type || "bounty",
         commission_amount: affiliate.commission_amount,
         created_at: affiliate.created_at,
       },

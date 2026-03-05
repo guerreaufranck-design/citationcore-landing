@@ -36,6 +36,7 @@ interface AffiliateData {
   affiliate: {
     name: string;
     code: string;
+    commission_type: "bounty" | "recurring";
     commission_amount: number;
     created_at: string;
   };
@@ -148,15 +149,28 @@ export default function AffiliateDashboard() {
         <div className="bg-brand-50 border border-brand-200 rounded-xl p-6 mb-8">
           <div className="flex items-start gap-4">
             <div className="w-10 h-10 gradient-bg rounded-full flex items-center justify-center text-white font-bold shrink-0">
-              $
+              {affiliate.commission_type === "recurring" ? "%" : "$"}
             </div>
             <div>
-              <h3 className="font-semibold text-gray-900 mb-1">Commission: ${affiliate.commission_amount} per paid install</h3>
-              <p className="text-sm text-gray-600">
-                You earn ${affiliate.commission_amount} for each merchant who installs CitationCore through your link and upgrades to a paid plan.
-                Payouts are processed monthly via PayPal once Shopify confirms payment (typically 60-90 days after install).
-                Minimum payout: $50.
-              </p>
+              {affiliate.commission_type === "recurring" ? (
+                <>
+                  <h3 className="font-semibold text-gray-900 mb-1">Commission: 25–30% recurring monthly</h3>
+                  <p className="text-sm text-gray-600">
+                    You earn 25% on Starter &amp; Pro plans, 30% on Business plans — every month as long as the merchant stays subscribed.
+                    Payouts are processed monthly via PayPal once Shopify confirms payment (typically 60-90 days after first install).
+                    If a merchant churns, recurring commissions stop. Minimum payout: $50.
+                  </p>
+                </>
+              ) : (
+                <>
+                  <h3 className="font-semibold text-gray-900 mb-1">Commission: ${affiliate.commission_amount} per paid install</h3>
+                  <p className="text-sm text-gray-600">
+                    You earn ${affiliate.commission_amount} for each merchant who installs CitationCore through your link and upgrades to a paid plan.
+                    Payouts are processed monthly via PayPal once Shopify confirms payment (typically 60-90 days after install).
+                    Minimum payout: $50.
+                  </p>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -182,7 +196,7 @@ export default function AffiliateDashboard() {
                         <th className="px-6 py-3">Store</th>
                         <th className="px-6 py-3">Status</th>
                         <th className="px-6 py-3">Plan</th>
-                        <th className="px-6 py-3">Bounty</th>
+                        <th className="px-6 py-3">{affiliate.commission_type === "recurring" ? "Commission" : "Bounty"}</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-100">
