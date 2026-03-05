@@ -41,6 +41,9 @@ CREATE TABLE IF NOT EXISTS affiliate_referrals (
   bounty_amount DECIMAL(10,2) DEFAULT 0,
   bounty_paid BOOLEAN DEFAULT FALSE,
   bounty_paid_at TIMESTAMPTZ,
+  recurring_rate DECIMAL(5,2) DEFAULT 0, -- 25.00 or 30.00 (percentage)
+  recurring_earned DECIMAL(10,2) DEFAULT 0, -- total recurring earned so far
+  commission_type VARCHAR(20) DEFAULT 'bounty', -- 'bounty' or 'recurring'
   installed_at TIMESTAMPTZ DEFAULT NOW(),
   first_paid_at TIMESTAMPTZ,
   churned_at TIMESTAMPTZ,
@@ -53,6 +56,7 @@ CREATE TABLE IF NOT EXISTS affiliate_payouts (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   affiliate_code VARCHAR(50) NOT NULL REFERENCES affiliates(code),
   amount DECIMAL(10,2) NOT NULL,
+  type VARCHAR(20) DEFAULT 'bounty', -- 'bounty' or 'recurring'
   method VARCHAR(20) DEFAULT 'paypal', -- 'paypal', 'stripe', 'manual'
   reference VARCHAR(200), -- PayPal transaction ID
   period_start DATE,

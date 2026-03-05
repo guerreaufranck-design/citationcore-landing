@@ -3,7 +3,7 @@ import { supabaseAdmin } from "@/lib/supabase";
 
 export async function POST(req: NextRequest) {
   try {
-    const { name, email, paypalEmail, platform, platformHandle } = await req.json();
+    const { name, email, paypalEmail, platform, platformHandle, commissionType } = await req.json();
 
     if (!name || !email) {
       return NextResponse.json({ error: "Name and email are required" }, { status: 400 });
@@ -44,6 +44,9 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    const commType = commissionType === "recurring" ? "recurring" : "bounty";
+    const commAmount = commType === "bounty" ? 15.00 : 25.00; // default bounty $15, or 25% recurring
+
     const { data, error } = await supabaseAdmin.from("affiliates").insert({
       code,
       name,
@@ -51,6 +54,8 @@ export async function POST(req: NextRequest) {
       paypal_email: paypalEmail || email,
       platform: platform || "other",
       platform_handle: platformHandle || "",
+      commission_type: commType,
+      commission_amount: commAmount,
     }).select().single();
 
     if (error) {
