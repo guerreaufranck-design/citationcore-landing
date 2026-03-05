@@ -86,6 +86,11 @@ export default function Footer() {
                   Blog
                 </Link>
               </li>
+              <li>
+                <Link href="/affiliates" className="text-gray-400 hover:text-white text-sm transition-colors">
+                  Affiliate Program
+                </Link>
+              </li>
             </ul>
           </div>
 

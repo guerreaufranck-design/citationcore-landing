@@ -1,4 +1,7 @@
-const SHOPIFY_URL = "https://apps.shopify.com/citationcore";
+"use client";
+
+import { useEffect, useState } from "react";
+import { getShopifyUrl, SHOPIFY_URL } from "@/lib/shopify-url";
 
 const plans = [
   {
@@ -69,6 +72,12 @@ const plans = [
 ];
 
 export default function Pricing() {
+  const [installUrl, setInstallUrl] = useState(SHOPIFY_URL);
+
+  useEffect(() => {
+    setInstallUrl(getShopifyUrl());
+  }, []);
+
   return (
     <section id="pricing" className="py-20 sm:py-28 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -124,7 +133,7 @@ export default function Pricing() {
               </ul>
 
               <a
-                href={SHOPIFY_URL}
+                href={installUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`block w-full text-center py-3 rounded-full font-semibold text-sm transition-all ${

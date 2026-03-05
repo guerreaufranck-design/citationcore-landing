@@ -3,16 +3,17 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-
-const SHOPIFY_URL = "https://apps.shopify.com/citationcore";
+import { getShopifyUrl, SHOPIFY_URL } from "@/lib/shopify-url";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [installUrl, setInstallUrl] = useState(SHOPIFY_URL);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll);
+    setInstallUrl(getShopifyUrl());
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -59,7 +60,7 @@ export default function Header() {
           {/* CTA */}
           <div className="hidden md:flex items-center gap-4">
             <a
-              href={SHOPIFY_URL}
+              href={installUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="gradient-bg text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:opacity-90 transition-opacity"
@@ -95,7 +96,7 @@ export default function Header() {
               <a href="#pricing" onClick={() => setMobileOpen(false)} className="text-sm font-medium text-gray-600 hover:text-gray-900 px-2 py-1">Pricing</a>
               <a href="#faq" onClick={() => setMobileOpen(false)} className="text-sm font-medium text-gray-600 hover:text-gray-900 px-2 py-1">FAQ</a>
               <a
-                href={SHOPIFY_URL}
+                href={installUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="gradient-bg text-white px-5 py-2.5 rounded-full text-sm font-semibold text-center mt-2"

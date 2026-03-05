@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Suspense } from "react";
+import RefTracker from "@/components/RefTracker";
 import "./globals.css";
 
 const inter = Inter({
@@ -175,7 +177,12 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
         />
       </head>
-      <body className={`${inter.variable} antialiased`}>{children}</body>
+      <body className={`${inter.variable} antialiased`}>
+        <Suspense fallback={null}>
+          <RefTracker />
+        </Suspense>
+        {children}
+      </body>
     </html>
   );
 }

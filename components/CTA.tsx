@@ -1,6 +1,15 @@
-const SHOPIFY_URL = "https://apps.shopify.com/citationcore";
+"use client";
+
+import { useEffect, useState } from "react";
+import { getShopifyUrl, SHOPIFY_URL } from "@/lib/shopify-url";
 
 export default function CTA() {
+  const [installUrl, setInstallUrl] = useState(SHOPIFY_URL);
+
+  useEffect(() => {
+    setInstallUrl(getShopifyUrl());
+  }, []);
+
   return (
     <section className="py-20 sm:py-28 bg-gray-950 relative overflow-hidden">
       {/* Gradient orbs */}
@@ -21,7 +30,7 @@ export default function CTA() {
 
         <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
           <a
-            href={SHOPIFY_URL}
+            href={installUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="gradient-bg pulse-glow text-white px-10 py-4 rounded-full text-lg font-semibold hover:opacity-90 transition-all inline-flex items-center justify-center gap-2"
