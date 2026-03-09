@@ -101,6 +101,21 @@ export default function Footer() {
                   Affiliate Program
                 </Link>
               </li>
+              <li>
+                <a
+                  href="https://citationcore.io"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-white text-sm transition-colors inline-flex items-center gap-1"
+                >
+                  WordPress / WooCommerce
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
+                    <polyline points="15 3 21 3 21 9" />
+                    <line x1="10" y1="14" x2="21" y2="3" />
+                  </svg>
+                </a>
+              </li>
             </ul>
           </div>
 

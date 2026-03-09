@@ -47,6 +47,18 @@ export default function CTA() {
         <p className="mt-6 text-sm text-gray-500">
           ✓ Free plan forever &nbsp; ✓ No credit card &nbsp; ✓ 30-second install &nbsp; ✓ Cancel anytime
         </p>
+
+        <p className="mt-4 text-sm text-gray-600">
+          Not on Shopify?{" "}
+          <a
+            href="https://citationcore.io"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-brand-400 hover:text-brand-300 underline underline-offset-2 transition-colors"
+          >
+            CitationCore is also available for WordPress, WooCommerce &amp; any website →
+          </a>
+        </p>
       </div>
     </section>
   );
