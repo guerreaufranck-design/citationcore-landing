@@ -87,6 +87,16 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/guide" className="text-gray-400 hover:text-white text-sm transition-colors">
+                  Getting Started Guide
+                </Link>
+              </li>
+              <li>
+                <Link href="/faq" className="text-gray-400 hover:text-white text-sm transition-colors">
+                  FAQ
+                </Link>
+              </li>
+              <li>
                 <Link href="/affiliates" className="text-gray-400 hover:text-white text-sm transition-colors">
                   Affiliate Program
                 </Link>

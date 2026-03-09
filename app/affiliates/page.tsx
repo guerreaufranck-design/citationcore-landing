@@ -137,14 +137,14 @@ export default function AffiliateSignup() {
                     <td className="px-6 py-3 font-semibold text-brand-600">$15</td>
                   </tr>
                   <tr className="text-sm">
-                    <td className="px-6 py-3 font-medium text-gray-900">Pro</td>
-                    <td className="px-6 py-3 text-gray-600">$39/mo</td>
-                    <td className="px-6 py-3 font-semibold text-brand-600">$25</td>
+                    <td className="px-6 py-3 font-medium text-gray-900">Growth</td>
+                    <td className="px-6 py-3 text-gray-600">$49/mo</td>
+                    <td className="px-6 py-3 font-semibold text-brand-600">$30</td>
                   </tr>
                   <tr className="text-sm">
-                    <td className="px-6 py-3 font-medium text-gray-900">Business</td>
-                    <td className="px-6 py-3 text-gray-600">$79/mo</td>
-                    <td className="px-6 py-3 font-semibold text-brand-600">$40</td>
+                    <td className="px-6 py-3 font-medium text-gray-900">Pro</td>
+                    <td className="px-6 py-3 text-gray-600">$99/mo</td>
+                    <td className="px-6 py-3 font-semibold text-brand-600">$50</td>
                   </tr>
                 </tbody>
               </table>
@@ -182,14 +182,14 @@ export default function AffiliateSignup() {
                     <td className="px-6 py-3 font-semibold text-brand-600">$4.75/mo <span className="text-gray-400 font-normal text-xs">(25%)</span></td>
                   </tr>
                   <tr className="text-sm">
-                    <td className="px-6 py-3 font-medium text-gray-900">Pro</td>
-                    <td className="px-6 py-3 text-gray-600">$39/mo</td>
-                    <td className="px-6 py-3 font-semibold text-brand-600">$9.75/mo <span className="text-gray-400 font-normal text-xs">(25%)</span></td>
+                    <td className="px-6 py-3 font-medium text-gray-900">Growth</td>
+                    <td className="px-6 py-3 text-gray-600">$49/mo</td>
+                    <td className="px-6 py-3 font-semibold text-brand-600">$12.25/mo <span className="text-gray-400 font-normal text-xs">(25%)</span></td>
                   </tr>
                   <tr className="text-sm">
-                    <td className="px-6 py-3 font-medium text-gray-900">Business</td>
-                    <td className="px-6 py-3 text-gray-600">$79/mo</td>
-                    <td className="px-6 py-3 font-semibold text-brand-600">$23.70/mo <span className="text-gray-400 font-normal text-xs">(30%)</span></td>
+                    <td className="px-6 py-3 font-medium text-gray-900">Pro</td>
+                    <td className="px-6 py-3 text-gray-600">$99/mo</td>
+                    <td className="px-6 py-3 font-semibold text-brand-600">$29.70/mo <span className="text-gray-400 font-normal text-xs">(30%)</span></td>
                   </tr>
                 </tbody>
               </table>
@@ -293,7 +293,7 @@ export default function AffiliateSignup() {
                     }`}
                   >
                     <span className="font-semibold text-gray-900 block">One-time bounty</span>
-                    <span className="text-xs text-gray-500">$15–$40 per paid install</span>
+                    <span className="text-xs text-gray-500">$15–$50 per paid install</span>
                   </button>
                   <button
                     type="button"
