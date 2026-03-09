@@ -70,6 +70,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: SITE_URL,
   },
+  verification: {
+    google: "ioc-Rv0jNWtc9G4HE5PsfJZa7QRqsjjwhIiSCkbFGJo",
+  },
   icons: {
     icon: "/favicon.ico",
     apple: "/images/logo.png",
